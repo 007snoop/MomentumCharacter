@@ -2,7 +2,7 @@ package momentumCharacter;
 
 import basemod.BaseMod;
 import basemod.interfaces.*;
-import momentumCharacter.character.MyCharacter;
+import momentumCharacter.character.TheMomentum;
 import momentumCharacter.util.GeneralUtils;
 import momentumCharacter.util.KeywordInfo;
 import momentumCharacter.util.Sounds;
@@ -52,7 +52,7 @@ public class BasicMod implements
     public static void initialize() {
         new BasicMod();
 
-        MyCharacter.Meta.registerColor();
+        TheMomentum.Meta.registerColor();
     }
 
     public BasicMod() {
@@ -161,7 +161,7 @@ public class BasicMod implements
 
     @Override
     public void receiveEditCharacters() {
-        MyCharacter.Meta.registerCharacter();
+        TheMomentum.Meta.registerCharacter();
     }
 
     @Override

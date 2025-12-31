@@ -1,12 +1,12 @@
 {
-  "${modID}:CharacterID": {
+  "${modID}:Momentum": {
     "NAMES": [
-      "The Momentum (Displayed in character select)",
-      "the Momentum (but 'the' is lowercase, this is displayed at the top left during gameplay)"
+      "The Momentum",
+      "the Momentum"
     ],
     "TEXT": [
-      "A relentless fighter who builds power with every action.\nUnleash devastating swings by committing fully to the flow of battle.",
-      " NL Text displayed when smacking the heart. The next one is used for the Vampires event. Usually you just change the last bit.",
+      "A relentless fighter who builds power with every action. NL Unleash devastating swings by committing fully to the flow of battle.",
+      "With momentum spent, the heart finally yields.",
       "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~basic~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
     ]
   }

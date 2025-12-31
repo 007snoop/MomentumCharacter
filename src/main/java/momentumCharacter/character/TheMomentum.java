@@ -28,16 +28,16 @@ import java.util.ArrayList;
 import static momentumCharacter.BasicMod.characterPath;
 import static momentumCharacter.BasicMod.makeID;
 
-public class MyCharacter extends CustomPlayer {
+public class TheMomentum extends CustomPlayer {
     //Stats
     public static final int ENERGY_PER_TURN = 3;
-    public static final int MAX_HP = 70;
+    public static final int MAX_HP = 75;
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 0;
 
     //Strings
-    private static final String ID = makeID("CharacterID"); //This should match whatever you have in the CharacterStrings.json file
+    private static final String ID = makeID("Momentum"); //This should match whatever you have in the CharacterStrings.json file
     private static String[] getNames() { return CardCrawlGame.languagePack.getCharacterString(ID).NAMES; }
     private static String[] getText() { return CardCrawlGame.languagePack.getCharacterString(ID).TEXT; }
 
@@ -46,10 +46,10 @@ public class MyCharacter extends CustomPlayer {
         //These are used to identify your character, as well as your character's card color.
         //Library color is basically the same as card color, but you need both because that's how the game was made.
         @SpireEnum
-        public static PlayerClass YOUR_CHARACTER;
-        @SpireEnum(name = "CHARACTER_GRAY_COLOR") // These two MUST match. Change it to something unique for your character.
+        public static PlayerClass The_Momentum;
+        @SpireEnum(name = "CHARACTER_YELLOW_COLOR") // These two MUST match. Change it to something unique for your character.
         public static AbstractCard.CardColor CARD_COLOR;
-        @SpireEnum(name = "CHARACTER_GRAY_COLOR") @SuppressWarnings("unused")
+        @SpireEnum(name = "CHARACTER_YELLOW_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
 
         //Character select images
@@ -79,7 +79,7 @@ public class MyCharacter extends CustomPlayer {
         }
 
         public static void registerCharacter() {
-            BaseMod.addCharacter(new MyCharacter(), CHAR_SELECT_BUTTON, CHAR_SELECT_PORTRAIT);
+            BaseMod.addCharacter(new TheMomentum(), CHAR_SELECT_BUTTON, CHAR_SELECT_PORTRAIT);
         }
     }
 
@@ -116,8 +116,8 @@ public class MyCharacter extends CustomPlayer {
 
     //Actual character class code below this point
 
-    public MyCharacter() {
-        super(getNames()[0], Meta.YOUR_CHARACTER,
+    public TheMomentum() {
+        super(getNames()[0], Meta.The_Momentum,
                 new CustomEnergyOrb(orbTextures, characterPath("energyorb/vfx.png"), layerSpeeds), //Energy Orb
                 new SpriterAnimation(characterPath("animation/default.scml"))); //Animation
 
@@ -256,6 +256,6 @@ public class MyCharacter extends CustomPlayer {
     @Override
     public AbstractPlayer newInstance() {
         //Makes a new instance of your character class.
-        return new MyCharacter();
+        return new TheMomentum();
     }
 }

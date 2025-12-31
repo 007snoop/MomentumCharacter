@@ -1,7 +1,7 @@
-package basicmod.powers;
+package momentumCharacter.powers;
 
-import basicmod.util.GeneralUtils;
-import basicmod.util.TextureLoader;
+import momentumCharacter.util.GeneralUtils;
+import momentumCharacter.util.TextureLoader;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

@@ -1,4 +1,4 @@
-package basicmod.util;
+package momentumCharacter.util;
 
 import basemod.helpers.KeywordColorInfo;
 

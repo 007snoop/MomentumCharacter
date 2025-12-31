@@ -1,12 +1,12 @@
-package basicmod;
+package momentumCharacter;
 
 import basemod.BaseMod;
 import basemod.interfaces.*;
-import basicmod.character.MyCharacter;
-import basicmod.util.GeneralUtils;
-import basicmod.util.KeywordInfo;
-import basicmod.util.Sounds;
-import basicmod.util.TextureLoader;
+import momentumCharacter.character.MyCharacter;
+import momentumCharacter.util.GeneralUtils;
+import momentumCharacter.util.KeywordInfo;
+import momentumCharacter.util.Sounds;
+import momentumCharacter.util.TextureLoader;
 import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglFileHandle;

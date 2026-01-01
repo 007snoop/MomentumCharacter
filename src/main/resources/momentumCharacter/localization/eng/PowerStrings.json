@@ -1,8 +1,8 @@
 {
-  "${modID}:PowerID": {
-    "NAME": "Ultimate Power",
+  "${modID}:Momentum": {
+    "NAME": "Momentum",
     "DESCRIPTIONS": [
-      "You are Very Cool and Strong."
+      "Opens Momentum. NL Counter starts at 0 and increase for each card played. NL Caps at 10."
     ]
   }
 }

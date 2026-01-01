@@ -1,5 +1,7 @@
 package momentumCharacter.powers;
 
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import momentumCharacter.util.GeneralUtils;
 import momentumCharacter.util.TextureLoader;
 import com.badlogic.gdx.graphics.Color;
@@ -13,12 +15,18 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public abstract class BasePower extends AbstractPower {
+import static momentumCharacter.BasicMod.makeID;
+
+public abstract class Momentum extends AbstractPower {
+    private static final String POWER_ID = makeID("Momentum");
     private static PowerStrings getPowerStrings(String ID)
     {
         return CardCrawlGame.languagePack.getPowerStrings(ID);
     }
+    private final String NAME = getPowerStrings(ID).NAME;
+    private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
     protected AbstractCreature source;
+    private static final int MAX_MOMENTUM = 10;
     protected String[] DESCRIPTIONS;
 
     //Will not display if at 0. You can override renderAmount to render it however you want.
@@ -27,16 +35,18 @@ public abstract class BasePower extends AbstractPower {
     protected Color redColor2 = Color.RED.cpy();
     protected Color greenColor2 = Color.GREEN.cpy();
 
-    public BasePower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
+    public Momentum(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
         this(id, powerType, isTurnBased, owner, null, amount);
     }
-    public BasePower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, AbstractCreature source, int amount) {
+    public Momentum(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, AbstractCreature source, int amount) {
         this(id, powerType, isTurnBased, owner, source, amount, true);
     }
-    public BasePower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, AbstractCreature source, int amount, boolean initDescription) {
+    public Momentum(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, AbstractCreature source, int amount, boolean initDescription) {
         this(id, powerType, isTurnBased, owner, source, amount, initDescription, true);
     }
-    public BasePower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, AbstractCreature source, int amount, boolean initDescription, boolean loadImage) {
+
+    // main constructor
+    public Momentum(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, AbstractCreature source, int amount, boolean initDescription, boolean loadImage) {
         this.ID = id;
         this.isTurnBased = isTurnBased;
 
@@ -82,6 +92,16 @@ public abstract class BasePower extends AbstractPower {
             }
 
             FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.amount2), x, y + 15.0F * Settings.scale, this.fontScale, c);
+        }
+    }
+
+    // after card resolves add "Momentum" counter to player
+    @Override
+    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
+        if (this.amount < MAX_MOMENTUM) {
+            this.flash();
+            this.amount++;
+            updateDescription();
         }
     }
 }

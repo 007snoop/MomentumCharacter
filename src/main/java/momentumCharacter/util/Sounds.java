@@ -1,6 +1,6 @@
 package momentumCharacter.util;
 
-import static momentumCharacter.BasicMod.audioPath;
+import static momentumCharacter.MomentumMod.audioPath;
 
 public class Sounds {
     public static String TEST_SOUND = audioPath("test.wav"); //Load audio using a given path

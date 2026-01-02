@@ -8,5 +8,25 @@
       "If you need to use it for stuff.",
       "Blizzard is a good example for this."
     ]
+  },
+  "${modID}:Strike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Example Description for strike card I made. NL Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Example Upgrade Description.",
+    "EXTENDED_DESCRIPTION": [
+      "First [0] text box",
+      "Second [1] text box",
+      "third [2] text box"
+    ]
+  },
+  "${modID}:BuildMomentum": {
+    "NAME": "Build Momentum",
+    "DESCRIPTION": "Gain !M! Momentum.",
+    "UPGRADE_DESCRIPTION": "Gain !M! Momentum",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
   }
 }

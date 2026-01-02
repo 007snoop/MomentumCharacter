@@ -25,8 +25,8 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import java.util.ArrayList;
 
-import static momentumCharacter.BasicMod.characterPath;
-import static momentumCharacter.BasicMod.makeID;
+import static momentumCharacter.MomentumMod.characterPath;
+import static momentumCharacter.MomentumMod.makeID;
 
 public class TheMomentum extends CustomPlayer {
     //Stats

@@ -15,15 +15,14 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import static momentumCharacter.BasicMod.makeID;
+import static momentumCharacter.MomentumMod.makeID;
 
-public abstract class Momentum extends AbstractPower {
+public class Momentum extends AbstractPower {
     private static final String POWER_ID = makeID("Momentum");
     private static PowerStrings getPowerStrings(String ID)
     {
         return CardCrawlGame.languagePack.getPowerStrings(ID);
     }
-    private final String NAME = getPowerStrings(ID).NAME;
     private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
     protected AbstractCreature source;
     private static final int MAX_MOMENTUM = 10;
@@ -35,50 +34,19 @@ public abstract class Momentum extends AbstractPower {
     protected Color redColor2 = Color.RED.cpy();
     protected Color greenColor2 = Color.GREEN.cpy();
 
-    public Momentum(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
-        this(id, powerType, isTurnBased, owner, null, amount);
-    }
-    public Momentum(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, AbstractCreature source, int amount) {
-        this(id, powerType, isTurnBased, owner, source, amount, true);
-    }
-    public Momentum(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, AbstractCreature source, int amount, boolean initDescription) {
-        this(id, powerType, isTurnBased, owner, source, amount, initDescription, true);
-    }
+    public Momentum(AbstractCreature o, int amount) {
+        this.ID = POWER_ID;
+        this.owner = o;
+        this.amount = amount;
+        this.type = PowerType.BUFF;
+        this.isTurnBased = false;
 
-    // main constructor
-    public Momentum(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, AbstractCreature source, int amount, boolean initDescription, boolean loadImage) {
-        this.ID = id;
-        this.isTurnBased = isTurnBased;
-
-        PowerStrings strings = getPowerStrings(this.ID);
+        PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(this.ID);
         this.name = strings.NAME;
         this.DESCRIPTIONS = strings.DESCRIPTIONS;
 
-        this.owner = owner;
-        this.source = source;
-        this.amount = amount;
-        this.type = powerType;
-
-        if (loadImage)
-        {
-            String unPrefixed = GeneralUtils.removePrefix(id);
-            Texture normalTexture = TextureLoader.getPowerTexture(unPrefixed);
-            Texture hiDefImage = TextureLoader.getHiDefPowerTexture(unPrefixed);
-            if (hiDefImage != null)
-            {
-                region128 = new TextureAtlas.AtlasRegion(hiDefImage, 0, 0, hiDefImage.getWidth(), hiDefImage.getHeight());
-                if (normalTexture != null)
-                    region48 = new TextureAtlas.AtlasRegion(normalTexture, 0, 0, normalTexture.getWidth(), normalTexture.getHeight());
-            }
-            else
-            {
-                this.img = normalTexture;
-                region48 = new TextureAtlas.AtlasRegion(normalTexture, 0, 0, normalTexture.getWidth(), normalTexture.getHeight());
-            }
-        }
-
-        if (initDescription)
-            this.updateDescription();
+        loadRegion("strength");
+        updateDescription();
     }
 
     public void renderAmount(SpriteBatch sb, float x, float y, Color c) {
@@ -95,13 +63,33 @@ public abstract class Momentum extends AbstractPower {
         }
     }
 
+
+
     // after card resolves add "Momentum" counter to player
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
+        if (card.cardID.equals("${modID}:BuildMomentum")) {
+            return;
+        }
+
         if (this.amount < MAX_MOMENTUM) {
-            this.flash();
             this.amount++;
+            this.flash();
             updateDescription();
         }
+    }
+
+    // spend momentum for counter increase
+    public int spendMomentum(int amountToSpend) {
+        int spend = Math.min(amountToSpend, this.amount);
+        this.amount -= spend;
+        updateDescription();
+        this.flash();
+        return spend;
+    }
+
+    @Override
+    public void updateDescription() {
+        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
 }

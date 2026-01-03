@@ -2,6 +2,7 @@ package momentumCharacter.powers;
 
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import momentumCharacter.MomentumMod;
 import momentumCharacter.util.GeneralUtils;
 import momentumCharacter.util.TextureLoader;
 import com.badlogic.gdx.graphics.Color;
@@ -68,13 +69,13 @@ public class Momentum extends AbstractPower {
     // after card resolves add "Momentum" counter to player
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        if (card.cardID.equals("${modID}:BuildMomentum")) {
+        if (!card.hasTag(MomentumMod.MOMENTUM_TRIGGER)) {
             return;
         }
 
         if (this.amount < MAX_MOMENTUM) {
             this.amount++;
-            this.flash();
+            if (this.amount % 2 == 0) { this.flash(); }
             updateDescription();
         }
     }

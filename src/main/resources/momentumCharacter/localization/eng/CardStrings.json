@@ -9,9 +9,9 @@
       "Blizzard is a good example for this."
     ]
   },
-  "${modID}:Strike": {
-    "NAME": "Strike",
-    "DESCRIPTION": "Example Description for strike card I made. NL Deal !D! damage.",
+  "${modID}:SwiftStrike": {
+    "NAME": "Swift Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Add !M! Momentum.",
     "UPGRADE_DESCRIPTION": "Example Upgrade Description.",
     "EXTENDED_DESCRIPTION": [
       "First [0] text box",

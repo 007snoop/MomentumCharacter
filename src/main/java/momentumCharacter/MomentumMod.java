@@ -3,6 +3,8 @@ package momentumCharacter;
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.interfaces.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import momentumCharacter.cards.BaseCard;
 import momentumCharacter.character.TheMomentum;
 import momentumCharacter.util.GeneralUtils;
@@ -44,6 +46,8 @@ public class MomentumMod implements
     static { loadModInfo(); }
     private static final String resourcesFolder = checkResourcesPath();
     public static final Logger logger = LogManager.getLogger(modID); //Used to output to the console.
+    @SpireEnum
+    public static AbstractCard.CardTags MOMENTUM_TRIGGER;
 
     //This is used to prefix the IDs of various objects like cards and relics,
     //to avoid conflicts between different mods using the same name for things.
@@ -288,4 +292,6 @@ public class MomentumMod implements
                 .setDefaultSeen(true)
                 .cards();
     }
+
+
 }

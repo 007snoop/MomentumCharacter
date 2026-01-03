@@ -15,7 +15,7 @@ public class BuildMomentum extends BaseCard {
             CardType.SKILL,
             CardRarity.BASIC,
             CardTarget.SELF,
-            1
+            0
     );
 
     public BuildMomentum() {

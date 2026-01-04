@@ -22,6 +22,12 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.relics.BurningBlood;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import momentumCharacter.MomentumMod;
+import momentumCharacter.cards.BuildMomentum;
+import momentumCharacter.cards.MomentOfOpportunity;
+import momentumCharacter.cards.SwiftStrike;
+import momentumCharacter.powers.Momentum;
+import momentumCharacter.relics.InnerPeace;
 
 import java.util.ArrayList;
 
@@ -47,9 +53,9 @@ public class TheMomentum extends CustomPlayer {
         //Library color is basically the same as card color, but you need both because that's how the game was made.
         @SpireEnum
         public static PlayerClass The_Momentum;
-        @SpireEnum(name = "CHARACTER_YELLOW_COLOR") // These two MUST match. Change it to something unique for your character.
+        @SpireEnum(name = "CHARACTER_RED_COLOR") // These two MUST match. Change it to something unique for your character.
         public static AbstractCard.CardColor CARD_COLOR;
-        @SpireEnum(name = "CHARACTER_YELLOW_COLOR") @SuppressWarnings("unused")
+        @SpireEnum(name = "CHARACTER_RED_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
 
         //Character select images
@@ -139,8 +145,10 @@ public class TheMomentum extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
         //List of IDs of cards for your starting deck.
         //If you want multiple of the same card, you have to add it multiple times.
-        retVal.add(Strike_Red.ID);
-        retVal.add(Strike_Red.ID);
+        retVal.add(BuildMomentum.ID);
+        retVal.add(SwiftStrike.ID);
+        retVal.add(SwiftStrike.ID);
+        retVal.add(MomentOfOpportunity.ID);
         retVal.add(Defend_Blue.ID);
         retVal.add(Defend_Blue.ID);
         retVal.add(Neutralize.ID);
@@ -152,7 +160,7 @@ public class TheMomentum extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
         //IDs of starting relics. You can have multiple, but one is recommended.
-        retVal.add(BurningBlood.ID);
+        retVal.add(InnerPeace.ID);
 
         return retVal;
     }
@@ -181,9 +189,9 @@ public class TheMomentum extends CustomPlayer {
         };
     }
 
-    private final Color cardRenderColor = Color.LIGHT_GRAY.cpy(); //Used for some vfx on moving cards (sometimes) (maybe)
-    private final Color cardTrailColor = Color.LIGHT_GRAY.cpy(); //Used for card trail vfx during gameplay.
-    private final Color slashAttackColor = Color.LIGHT_GRAY.cpy(); //Used for a screen tint effect when you attack the heart.
+    private final Color cardRenderColor = Color.RED.cpy(); //Used for some vfx on moving cards (sometimes) (maybe)
+    private final Color cardTrailColor = Color.RED.cpy(); //Used for card trail vfx during gameplay.
+    private final Color slashAttackColor = Color.RED.cpy(); //Used for a screen tint effect when you attack the heart.
     @Override
     public Color getCardRenderColor() {
         return cardRenderColor;

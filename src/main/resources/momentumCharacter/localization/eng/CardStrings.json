@@ -28,5 +28,15 @@
       "If you need to use it for stuff.",
       "Blizzard is a good example for this."
     ]
+  },
+  "${modID}:MomentOfOpportunity": {
+    "NAME": "Moment Of Opportunity",
+    "DESCRIPTION": "Spend all Momentum. NL Deal !D! + 2 damage for each Momentum spent.",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
   }
 }

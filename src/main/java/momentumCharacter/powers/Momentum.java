@@ -3,12 +3,8 @@ package momentumCharacter.powers;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import momentumCharacter.MomentumMod;
-import momentumCharacter.util.GeneralUtils;
-import momentumCharacter.util.TextureLoader;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -19,7 +15,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import static momentumCharacter.MomentumMod.makeID;
 
 public class Momentum extends AbstractPower {
-    private static final String POWER_ID = makeID("Momentum");
+    public static final String POWER_ID = makeID("Momentum");
     private static PowerStrings getPowerStrings(String ID)
     {
         return CardCrawlGame.languagePack.getPowerStrings(ID);
@@ -87,6 +83,15 @@ public class Momentum extends AbstractPower {
         updateDescription();
         this.flash();
         return spend;
+    }
+
+    // helper method to spend all momentum
+    public int spendAllMomentum() {
+        int spent = this.amount;
+        this.amount = 0;
+        updateDescription();
+        this.flash();
+        return spent;
     }
 
     @Override

@@ -2,8 +2,8 @@
   "${modID}:Momentum": {
     "NAME": "Momentum",
     "DESCRIPTIONS": [
-      "Opens #b Momentum.",
-      " NL Counter starts at 0 and increase for each card played. NL Caps at 10."
+      "Opens Momentum for combos. NL Counter starts at 0 and increase for each card played.",
+      " NL Caps at 10."
     ]
   }
 }

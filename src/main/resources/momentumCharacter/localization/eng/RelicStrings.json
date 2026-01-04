@@ -1,6 +1,6 @@
 {
-  "${modID}:swiftMoment": {
-    "NAME": "Swift Moment",
+  "${modID}:InnerPeace": {
+    "NAME": "Inner Peace",
     "FLAVOR": "Momentum flows like a river and never stops even for the largest stone.",
     "DESCRIPTIONS": [
       "At the start of each of your second turns, gain Momentum."

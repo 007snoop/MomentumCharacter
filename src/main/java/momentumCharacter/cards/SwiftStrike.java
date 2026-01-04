@@ -1,15 +1,14 @@
 package momentumCharacter.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import momentumCharacter.MomentumMod;
 import momentumCharacter.character.TheMomentum;
-import momentumCharacter.powers.Momentum;
 import momentumCharacter.util.CardStats;
 
 public class SwiftStrike extends BaseCard{
@@ -23,12 +22,12 @@ public class SwiftStrike extends BaseCard{
     );
     private static final int DAMAGE = 6;
     private static final int UPG_DAMAGE = 3;
-    private static final int MOMENTUM_COUTNER = 1;
+    private static final int MOMENTUM_COUNTER = 1;
 
     public SwiftStrike() {
         super(ID, info);
         setDamage(DAMAGE, UPG_DAMAGE);
-        this.magicNumber = this.baseMagicNumber = MOMENTUM_COUTNER;
+        this.magicNumber = this.baseMagicNumber = MOMENTUM_COUNTER;
         tags.add(MomentumMod.MOMENTUM_TRIGGER);
         tags.add(CardTags.STARTER_STRIKE);
         tags.add(CardTags.STRIKE);
@@ -36,16 +35,20 @@ public class SwiftStrike extends BaseCard{
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
+        // check if player has buff or not
+        if (player.hasPower(MomentumMod.modID)) {
+            // only then add +1
+            AbstractPower momentum = player.getPower(MomentumMod.modID);
+            momentum.amount += 1;
+            momentum.updateDescription();
+            momentum.flash();
+        }
+
         addToBot(new DamageAction(
                 monster,
                 new DamageInfo(player, damage, DamageInfo.DamageType.NORMAL),
                 AbstractGameAction.AttackEffect.SLASH_VERTICAL)
         );
-        addToBot(new ApplyPowerAction(
-                player,
-                player,
-                new Momentum(player, this.magicNumber)
-        ));
     }
 
     @Override
